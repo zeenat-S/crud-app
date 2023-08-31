@@ -1,0 +1,5 @@
+[
+  { "status": "pending", "comment": "Waiting for approval" },
+  { "status": "approved", "comment": "Approved and processed" },
+  { "status": "rejected", "comment": "Not approved" }
+]

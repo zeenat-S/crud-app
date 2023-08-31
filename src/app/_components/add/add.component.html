@@ -1,0 +1,50 @@
+<div class="container">
+    <header class="d-flex justify-content-center py-3">
+        <ul class="nav nav-pills">
+            <li class="nav-item"><a href="#" class="nav-link" aria-current="page">Home</a></li>
+            <li class="nav-item"><a href="/view" class="nav-link">Dashboard</a></li>
+        </ul>
+    </header>
+</div>
+<div class="container p-5 ">
+    <h4 class="text-center">Add New Employee</h4>
+    <div class="d-flex justify-content-center">
+        <div class="col-md-6">
+            <form [formGroup]="form">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="form-group"><label class="form-label">Name</label>
+                            <input type="text" class="form-control" formControlName="name">
+                        </div>
+                    </div>
+                    <div class="col-12">
+                        <div class="form-group"><label class="mb-1 form-label">Email</label>
+                            <input type="email" class="form-control" formControlName="email"
+                                appEmailValidator
+                                [class.is-invalid]="form.get('email')?.dirty && form.get('email')?.errors?.emailInvalid">
+                        </div>
+                        <div class="error" *ngIf="form.get('email')?.dirty && form.get('email')?.errors?.emailInvalid">
+                            Invalid Email
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="form-group"><label class="form-label">Phone</label>
+                            <input format="##########" type="text" class="form-control" formControlName="phone"
+                                appPhoneValidator
+                                [class.is-invalid]="form.get('phone')?.dirty && form.get('phone')?.errors?.phoneNumberInvalid">
+                        </div>
+                        <div class="error" *ngIf="form.get('phone')?.dirty && form.get('phone')?.errors?.phoneNumberInvalid">
+                            Phone number invalid
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-12">
+                        <div class="form-group"><label class="form-label">Department</label>
+                            <input type="text" class="form-control" formControlName="department">
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary my-3" (click)="save()">Save</button>
+            </form>
+        </div>
+    </div>
+</div>
